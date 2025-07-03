@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block title %}Home - Sweet Shop{% endblock %}
+
+{% block content %}
+  <!-- Welcome Message -->
+  <div class="text-center mb-4">
+    {% if user.is_authenticated %}
+      <h2 class="mb-2">Welcome, {{ user.username }}! 🍭</h2>
+    {% else %}
+      <h2 class="mb-2">Welcome to Sweet Shop! 🍬</h2>
+      <p class="lead">Login or register to add items to your cart.</p>
+    {% endif %}
+  </div>
+
+  <!-- About Section for Visitors -->
+  {% if not user.is_authenticated %}
+<div class="about-section bg-white p-4 rounded shadow-sm mb-5 border">
+  <div class="row align-items-center">
+    <div class="col-md-6">
+      <img src="{% static 'images/sweet collection2.jpg' %}" alt="About Sweet Shop"
+           class="img-fluid rounded shadow" style="max-height: 300px; object-fit: cover;">
+    </div>
+    <div class="col-md-6 mt-3 mt-md-0">
+      <h3 class="mb-3 text-primary">About Sweet Shop</h3>
+      <p>
+        At Sweet Shop, we celebrate the richness of Indian tradition through our delicious, handcrafted sweets.
+        Every bite tells a story — made with love, heritage, and the finest ingredients.
+      </p>
+      <a href="{% url 'about' %}" class="btn btn-outline-purple btn-sm">Learn More</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+  <!-- Sweets Section -->
+  <h3 class="text-center mb-3">Explore Our Sweets</h3>
+
+  <div class="row">
+    {% for product in products %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <img src="{{ product.image.url }}" class="card-img-top" height="200" style="object-fit: cover;">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="fw-bold">₹{{ product.price }}</p>
+            {% if user.is_authenticated %}
+              <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">Add to Cart</a>
+            {% else %}
+              <a href="{% url 'login' %}" class="btn btn-outline-primary">Login to Buy</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No sweets available yet. Please check back later!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

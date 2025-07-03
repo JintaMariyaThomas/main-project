@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About Us - Sweet Shop{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Section 1: Introduction -->
+  <div class="row mb-5">
+    <div class="col text-center">
+      <h1 class="mb-3">About Sweet Shop 🍭</h1>
+      <p class="lead">
+        Our mission is simple — to deliver the authentic taste of Indian tradition to your doorstep.
+        At Sweet Shop, sweets aren't just food — they’re emotion, culture, and celebration.
+      </p>
+    </div>
+  </div>
+
+  <!-- Section 2: Image and Description -->
+  <div class="row align-items-center mb-5">
+    <div class="col-md-6">
+      <img src="{% static 'images/sweet collection.jpg' %}" alt="Our Sweets" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h3>Why Choose Us?</h3>
+      <ul class="list-unstyled mt-3">
+        <li>✅ Handcrafted sweets made fresh daily</li>
+        <li>✅ Premium quality ingredients only</li>
+        <li>✅ Hygienic preparation, traditional recipes</li>
+        <li>✅ Fast delivery across India</li>
+        <li>✅ 1000+ happy customers</li>
+      </ul>
+      <a href="{% url 'products' %}" class="btn btn-primary mt-3">View Our Sweets</a>
+    </div>
+  </div>
+
+  <!-- Section 3: Our Story -->
+  <div class="row mb-5">
+    <div class="col-md-6">
+      <h3>Our Story</h3>
+      <p>
+        Founded with love and a passion for sweets, Sweet Shop started as a small kitchen in Kochi.
+        With word-of-mouth and happy hearts, we've grown to serve customers all over India.
+      </p>
+      <p>
+        We believe sweets connect people — and we're proud to be part of your celebrations, big and small.
+      </p>
+    </div>
+    <div class="col-md-6">
+      <img src="{% static 'images/sweet collection2.jpg' %}" alt="Our Story" class="img-fluid rounded shadow">
+    </div>
+  </div>
+
+  <!-- Section 4: Meet the Founder -->
+  <div class="row text-center">
+    <div class="col-md-4 offset-md-4">
+      <img src="{% static 'images/logo.jpg' %}" alt="Founder" class="img-fluid rounded-circle mb-3" style="width: 600px; height: 400px;">
+      <h4>ANNA FRANCIS</h4>
+      <p class="text-muted">Founder & Head Chef</p>
+      <p>
+        “I started this shop to share the flavors of my childhood with the world. Every sweet we sell is made with heart.”
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

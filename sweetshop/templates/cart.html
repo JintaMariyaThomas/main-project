@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Your Cart</h2>
+
+  {% if products %}
+    <ul class="list-group">
+      {% for product in products %}
+        <li class="list-group-item d-flex align-items-center justify-content-between">
+          <div class="d-flex align-items-center">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="60" height="60" class="me-3 rounded">
+            <div>
+              <h6 class="mb-0">{{ product.name }}</h6>
+              <small class="text-muted">₹{{ product.price }}</small>
+            </div>
+          </div>
+          <div>
+            <a href="{% url 'remove_from_cart' product.id %}" class="btn btn-sm btn-danger">Remove</a>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h4 class="mt-4">Total: ₹{{ total }}</h4>
+    <a href="{% url 'checkout' %}" class="btn btn-primary mt-3">Checkout</a>
+  {% else %}
+    <p>Your cart is empty.</p>
+  {% endif %}
+{% endblock %}

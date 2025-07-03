@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Order Placed{% endblock %}
+
+{% block content %}
+<div class="text-center mt-5">
+  <div class="alert alert-success">
+    <h2>🎉 Thank you!</h2>
+    <p>Your order has been placed successfully.</p>
+    <a href="{% url 'products' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Sweets{% endblock %}
+
+{% block content %}
+  <h2 class="text-center">Our Sweets</h2>
+
+  <form method="get" class="d-flex justify-content-center mb-4">
+    <input type="text" name="q" class="form-control w-50 me-2" placeholder="Search sweets..." value="{{ query|default:'' }}">
+    <button type="submit" class="btn btn-outline-primary">Search</button>
+  </form>
+
+  <div class="row">
+    {% for product in products %}
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="{{ product.image.url }}" class="card-img-top" height="200">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="fw-bold">₹{{ product.price }}</p>
+            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-success">Add to Cart</a>
+            <a href="{% url 'add_to_wishlist' product.id %}" class="btn btn-outline-warning btn-sm">💖 Wishlist</a>
+
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">No sweets match your search.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

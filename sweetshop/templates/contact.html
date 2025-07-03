@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row align-items-center">
+    
+    <!-- Contact Info Section -->
+    <div class="col-md-6 mb-4 mb-md-0">
+      <div class="p-4 bg-light rounded shadow-sm h-100">
+        <h2 class="text-primary mb-3">Contact Sweet Shop</h2>
+        <p><strong>Email:</strong> support@sweetshop.com</p>
+        <p><strong>Phone:</strong> +91 98765 43210</p>
+        <p><strong>Location:</strong> Kochi, Kerala</p>
+        <p class="mt-4">
+          We’re here to help! Got a sweet tooth question, a bulk order inquiry, or just want to say hi?
+          Feel free to reach out anytime — we’ll respond quickly!
+        </p>
+      </div>
+    </div>
+
+    <!-- Image Section -->
+    <div class="col-md-6">
+      <img src="{% static 'images/sweet collection.jpg' %}" class="img-fluid rounded shadow" alt="Contact Image"
+           style="max-height: 350px; object-fit: cover; width: 100%;">
+    </div>
+  </div>
+</div>
+{% endblock %}
